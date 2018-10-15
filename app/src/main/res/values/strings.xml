@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Hỗ trợ học tập</string>
+    <string name="title_home">Trang chủ</string>
+    <string name="label_course">Khóa học</string>
+    <string name="label_map">Bản đồ</string>
+    <string name="label_news">Tin tức</string>
+    <string name="label_social">Mạng xã hội</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_news">Tin tức</string>
+    <string name="search_google_maps">Tìm kiếm Google Maps</string>
+</resources>
