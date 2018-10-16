@@ -25,7 +25,6 @@ import vn.poly.hailt.learningsupport.model.News;
 
 public class NewsActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private RecyclerView lvNews;
     private NewsAdapter newsAdapter;
     private LinearLayoutManager manager;
@@ -43,7 +42,7 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_news);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,7 +60,7 @@ public class NewsActivity extends AppCompatActivity {
 
         private Context context;
 
-        public LoadRSSFromInternetTask(Context context) {
+        LoadRSSFromInternetTask(Context context) {
             this.context = context;
         }
 
@@ -105,9 +104,11 @@ public class NewsActivity extends AppCompatActivity {
                                 arrayListNews.add(news);
                             else if (news != null & nameTag.equalsIgnoreCase("title"))
                                 news.title = text.trim();
-                            else if (news != null & nameTag.equalsIgnoreCase("description"))
-                                news.description = text.trim();
-                            else if (news != null & nameTag.equalsIgnoreCase("pubDate"))
+                            else if (news != null & nameTag.equalsIgnoreCase("description")) {
+                                int start = text.trim().indexOf("<p>");
+                                int end = text.trim().indexOf("</p>");
+                                news.description = (text.trim().substring(start + 3, end)).trim();
+                            } else if (news != null & nameTag.equalsIgnoreCase("pubDate"))
                                 news.pubDate = text.trim();
                             else if (news != null & nameTag.equalsIgnoreCase("link"))
                                 news.link = text.trim();

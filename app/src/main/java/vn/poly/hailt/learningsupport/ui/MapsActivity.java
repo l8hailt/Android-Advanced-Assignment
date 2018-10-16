@@ -43,9 +43,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15f));
+        LatLng fpoly = new LatLng(21.03556795, 105.76525708);
+        mMap.addMarker(new MarkerOptions().position(fpoly).title("FPT Polytechnic"));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(fpoly, 18f));
 
     }
 
@@ -88,7 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.d("TAG", "geoLocate: found a location: " + address.toString());
             //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
 
-            animateCamera(new LatLng(address.getLatitude(), address.getLongitude()));
+            animateCamera(new LatLng(address.getLatitude(), address.getLongitude()), address.getAddressLine(0));
 
         }
     }
@@ -99,18 +99,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    private void animateCamera(LatLng latLng) {
+    private void animateCamera(LatLng latLng, String title) {
         Log.d("TAG", "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18f));
 
-//        if(!title.equals("My Location")){
-//            MarkerOptions options = new MarkerOptions()
-//                    .position(latLng)
-//                    .title(title);
-//            mMap.addMarker(options);
-//        }
+        mMap.clear();
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng)
+                .title(title);
+        mMap.addMarker(options);
 
-//        hideSoftKeyboard();
+
     }
 
 }

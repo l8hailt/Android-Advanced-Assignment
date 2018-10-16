@@ -11,7 +11,6 @@ import vn.poly.hailt.learningsupport.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private LinearLayout blockCourse;
     private LinearLayout blockMap;
     private LinearLayout blockNews;
@@ -30,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(R.string.title_home);
@@ -42,6 +41,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initActions() {
+        blockCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, CourseActivity.class));
+            }
+        });
         blockMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +57,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, NewsActivity.class));
+            }
+        });
+        blockSocial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, SocialActivity.class));
             }
         });
     }

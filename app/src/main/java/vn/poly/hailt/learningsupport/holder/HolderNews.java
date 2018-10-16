@@ -14,9 +14,6 @@ public class HolderNews extends RecyclerView.ViewHolder {
     public final TextView tvDescription;
     public final TextView tvPubDate;
 
-
-
-
     public HolderNews(View convertView) {
         super(convertView);
         imgThumb = convertView.findViewById(R.id.imgThumb);

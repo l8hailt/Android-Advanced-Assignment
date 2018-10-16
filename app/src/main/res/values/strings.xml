@@ -8,4 +8,39 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_news">Tin tức</string>
     <string name="search_google_maps">Tìm kiếm Google Maps</string>
+    <string name="facebook_app_id">2008712085853273</string>
+    <string name="fb_login_protocol_scheme">fb2008712085853273</string>
+    <string name="title_social">Mạng xã hội</string>
+    <string name="profile_name">Tên</string>
+    <string name="action_share">Chia sẻ</string>
+    <string name="not_logged_in">Bạn phải đăng nhập Facebook trước!</string>
+    <string name="title_course">Khóa học</string>
+    <string name="act_course_subject_id">Mã môn học</string>
+    <string name="act_course_subject_name">Tên môn học</string>
+    <string name="act_course_teacher">Giảng viên</string>
+    <string name="action_register">Đăng kí</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_schedule">Lịch học</string>
+    <string name="tab_test_schedule">Lịch thi</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="act_course_date">Ngày học</string>
+    <string name="message_confirm_delete_subject">Bạn có chắc chắn muốn xóa môn học này không?</string>
+    <string name="action_delete">Xóa</string>
+    <string name="action_no">Không</string>
+    <string name="action_yes">Có</string>
+    <string name="toast_deleted_successfully">Xóa thành công</string>
+    <string name="subject_registered">Bạn đã đăng kí môn học này!</string>
+    <string name="register_succesfully">Đăng kí thành công</string>
+    <string name="news_item_title">Title</string>
+    <string name="news_item_description">Description</string>
+    <string name="news_item_pub_date">Pub Date</string>
+    <string name="news_item_image_desc">Thumbnail</string>
+
 </resources>
