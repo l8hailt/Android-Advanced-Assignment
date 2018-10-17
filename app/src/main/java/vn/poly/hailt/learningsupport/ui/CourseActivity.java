@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -167,7 +166,7 @@ public class CourseActivity extends AppCompatActivity {
         }
 
         if (added) {
-            Toast.makeText(CourseActivity.this, R.string.register_succesfully, Toast.LENGTH_SHORT).show();
+            Toast.makeText(CourseActivity.this, R.string.register_successfully, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(CourseActivity.this, R.string.subject_registered, Toast.LENGTH_SHORT).show();
         }

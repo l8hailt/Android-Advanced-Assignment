@@ -1,15 +1,14 @@
 package vn.poly.hailt.learningsupport.ui;
 
-import android.location.Address;
-import android.location.Geocoder;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,16 +16,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import vn.poly.hailt.learningsupport.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private EditText edtSearch;
+
+    private PlaceAutocompleteFragment placeAutocompleteFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +38,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
         LatLng fpoly = new LatLng(21.03556795, 105.76525708);
         mMap.addMarker(new MarkerOptions().position(fpoly).title("FPT Polytechnic"));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(fpoly, 18f));
@@ -50,47 +45,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void initViews() {
-        edtSearch = findViewById(R.id.edtSearch);
+        placeAutocompleteFragment = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.fragPlace);
+        placeAutocompleteFragment.setFilter(new AutocompleteFilter.Builder().setCountry("VN").build());
+
     }
 
     private void initActions() {
-        edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        placeAutocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || keyEvent.getAction() == KeyEvent.ACTION_DOWN
-                        || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER) {
+            public void onPlaceSelected(Place place) {
+                LatLng latLng = place.getLatLng();
 
-                    geoLocate();
-                }
+                animateCamera(latLng, place.getName().toString());
 
-                return false;
+            }
+
+            @Override
+            public void onError(Status status) {
+
             }
         });
-    }
 
-    private void geoLocate() {
-
-        String searchStr = edtSearch.getText().toString();
-
-        Geocoder geocoder = new Geocoder(MapsActivity.this);
-        List<Address> list = new ArrayList<>();
-        try {
-            list = geocoder.getFromLocationName(searchStr, 1);
-        } catch (IOException e) {
-            Log.e("TAG", "geoLocate: IOException: " + e.getMessage());
-        }
-
-        if (list.size() > 0) {
-            Address address = list.get(0);
-
-            Log.d("TAG", "geoLocate: found a location: " + address.toString());
-            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
-
-            animateCamera(new LatLng(address.getLatitude(), address.getLongitude()), address.getAddressLine(0));
-
-        }
     }
 
     private void initMap() {

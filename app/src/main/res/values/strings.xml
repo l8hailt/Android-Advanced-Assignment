@@ -37,10 +37,11 @@
     <string name="action_yes">Có</string>
     <string name="toast_deleted_successfully">Xóa thành công</string>
     <string name="subject_registered">Bạn đã đăng kí môn học này!</string>
-    <string name="register_succesfully">Đăng kí thành công</string>
+    <string name="register_successfully">Đăng kí thành công</string>
     <string name="news_item_title">Title</string>
     <string name="news_item_description">Description</string>
     <string name="news_item_pub_date">Pub Date</string>
     <string name="news_item_image_desc">Thumbnail</string>
+    <string name="maps_magnify_desc">Image Magnify</string>
 
 </resources>

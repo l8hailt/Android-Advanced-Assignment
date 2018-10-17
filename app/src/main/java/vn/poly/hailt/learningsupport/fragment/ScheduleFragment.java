@@ -36,7 +36,7 @@ public class ScheduleFragment extends Fragment {
 
         scheduleDAO = new ScheduleDAO(getContext());
 
-//        sampleData();
+        sampleData();
 
         String subjectID = ((ScheduleActivity) Objects.requireNonNull(getActivity())).getSubjectID();
 
